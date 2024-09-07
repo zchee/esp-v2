@@ -118,3 +118,26 @@ grpc_test_only_deps()
 load("//bazel:grpc.bzl", "grpc_bindings")
 
 grpc_bindings()
+
+http_archive(
+    name = "hedron_compile_commands",
+    url = "https://github.com/zchee/bazel-compile-commands-extractor/archive/c84fe867fc6354b267792bff43f353ed815154be.tar.gz",
+    sha256 = "471b426a2a9ee8ed34e0c4c7c064092b437c557779c2d2f00a2a90b3202239e9",
+    strip_prefix = "bazel-compile-commands-extractor-c84fe867fc6354b267792bff43f353ed815154be",
+)
+
+load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
+
+hedron_compile_commands_setup()
+
+load("@hedron_compile_commands//:workspace_setup_transitive.bzl", "hedron_compile_commands_setup_transitive")
+
+hedron_compile_commands_setup_transitive()
+
+load("@hedron_compile_commands//:workspace_setup_transitive_transitive.bzl", "hedron_compile_commands_setup_transitive_transitive")
+
+hedron_compile_commands_setup_transitive_transitive()
+
+load("@hedron_compile_commands//:workspace_setup_transitive_transitive_transitive.bzl", "hedron_compile_commands_setup_transitive_transitive_transitive")
+
+hedron_compile_commands_setup_transitive_transitive_transitive()
